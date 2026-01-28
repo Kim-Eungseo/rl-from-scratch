@@ -1,5 +1,5 @@
-from tabular_value_function import TabularValueFunction
-from qtable import QTable
+from .tabular_value_function import TabularValueFunction
+from .qtable import QTable
 
 
 class ValueIteration:

@@ -1,5 +1,5 @@
 from collections import defaultdict
-from value_function import ValueFunction
+from .value_function import ValueFunction
 
 
 class TabularValueFunction(ValueFunction):

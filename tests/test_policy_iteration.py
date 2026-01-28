@@ -1,6 +1,5 @@
-from gridworld import GridWorld
-from tabular_policy import TabularPolicy
-from policy_iteration import PolicyIteration
+from envs import GridWorld
+from agents import TabularPolicy, PolicyIteration
 
 
 def main():

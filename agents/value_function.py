@@ -1,4 +1,4 @@
-from tabular_policy import TabularPolicy
+from .tabular_policy import TabularPolicy
 
 class ValueFunction:
 

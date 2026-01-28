@@ -1,5 +1,5 @@
 from collections import defaultdict
-from policy import DeterministicPolicy
+from .policy import DeterministicPolicy
 
 
 class TabularPolicy(DeterministicPolicy):

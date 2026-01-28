@@ -1,6 +1,5 @@
-from gridworld import GridWorld
-from tabular_value_function import TabularValueFunction
-from value_iteration import ValueIteration
+from envs import GridWorld
+from agents import TabularValueFunction, ValueIteration
 
 
 def main():

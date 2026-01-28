@@ -1,6 +1,6 @@
-from tabular_policy import TabularPolicy
-from tabular_value_function import TabularValueFunction
-from qtable import QTable
+from .tabular_policy import TabularPolicy
+from .tabular_value_function import TabularValueFunction
+from .qtable import QTable
 
 
 class PolicyIteration:
