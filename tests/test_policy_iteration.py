@@ -7,12 +7,12 @@ def main():
     print("Grid World Policy Iteration 테스트")
     print("=" * 50)
 
-    # 4x4 Grid World 생성
+    # 4x4 Grid World 생성 - 대각선 장애물
     gridworld = GridWorld(
         width=4,
         height=4,
         goal_states=[(0, 3)],
-        obstacles=[(1, 1)],
+        obstacles=[(1, 1), (2, 2)],  # 대각선 형태
         discount=0.9
     )
 
@@ -45,12 +45,19 @@ def test_larger_grid():
     print("더 큰 Grid World (10x10) Policy Iteration 테스트")
     print("=" * 50)
 
-    # 10x10 Grid World
+    # 10x10 Grid World - 나선형 패턴
     gridworld = GridWorld(
         width=10,
         height=10,
         goal_states=[(0, 9), (9, 9)],
-        obstacles=[(1, 3), (2, 3), (3, 3), (4, 3), (2, 6), (3, 6), (4, 6), (5, 6), (6, 6), (7, 3), (7, 4), (7, 5)],
+        obstacles=[
+            # 외곽 사각형
+            (2, 2), (2, 3), (2, 4), (2, 5), (2, 6), (2, 7),
+            (3, 7), (4, 7), (5, 7), (6, 7), (7, 7),
+            (7, 2), (7, 3), (7, 4), (7, 5), (7, 6),
+            # 내부 벽
+            (4, 4), (5, 4), (5, 5)
+        ],
         discount=0.95
     )
 

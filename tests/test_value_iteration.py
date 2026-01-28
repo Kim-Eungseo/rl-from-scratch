@@ -7,14 +7,13 @@ def main():
     print("Grid World Value Iteration 테스트")
     print("=" * 50)
 
-    # 4x4 Grid World 생성
+    # 4x4 Grid World 생성 - L자 장애물
     # 목표: (0, 3) - 우상단
-    # 장애물: (1, 1)
     gridworld = GridWorld(
         width=4,
         height=4,
         goal_states=[(0, 3)],
-        obstacles=[(1, 1)],
+        obstacles=[(1, 1), (2, 1), (1, 2)],  # L자 형태
         discount=0.9
     )
 
@@ -54,12 +53,18 @@ def test_larger_grid():
     print("더 큰 Grid World (6x6) 테스트")
     print("=" * 50)
 
-    # 6x6 Grid World
+    # 10x10 Grid World - 섬 패턴 (여러 작은 장애물)
     gridworld = GridWorld(
         width=10,
         height=10,
         goal_states=[(0, 9), (9, 9)],  # 두 개의 목표
-        obstacles=[(1, 2), (2, 2), (3, 2), (2, 4), (4, 4), (5, 4), (6, 4), (7, 4), (8, 4)],  # 벽 형태의 장애물
+        obstacles=[
+            # 작은 섬들 (2x2 블록)
+            (2, 2), (2, 3), (3, 2), (3, 3),
+            (5, 5), (5, 6), (6, 5), (6, 6),
+            # 작은 섬들 (단일)
+            (1, 7), (4, 1), (7, 3), (8, 8), (3, 8)
+        ],
         discount=0.95
     )
 

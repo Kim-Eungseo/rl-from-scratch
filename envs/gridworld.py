@@ -18,7 +18,7 @@ class GridWorld:
 
     ACTIONS = ["up", "down", "left", "right"]
 
-    def __init__(self, width=4, height=4, goal_states=None, obstacles=None, discount=0.9):
+    def __init__(self, width=4, height=4, goal_states=None, obstacles=None, discount=0.9, start_state=None):
         self.width = width
         self.height = height
         self.discount = discount
@@ -27,6 +27,10 @@ class GridWorld:
         self.goal_states = goal_states if goal_states else [(0, width - 1)]
         # 장애물
         self.obstacles = obstacles if obstacles else []
+        # 시작 상태 (기본: 좌하단)
+        self.start_state = start_state if start_state else (height - 1, 0)
+        # 현재 상태
+        self.current_state = self.start_state
 
     def get_states(self):
         """모든 상태(좌표) 반환"""
@@ -87,6 +91,26 @@ class GridWorld:
 
     def get_discount_factor(self):
         return self.discount
+
+    def reset(self):
+        """환경을 초기 상태로 리셋"""
+        self.current_state = self.start_state
+        return self.current_state
+
+    def step(self, action):
+        """
+        액션을 수행하고 결과를 반환
+        
+        Returns:
+            next_state: 다음 상태
+            reward: 보상
+            done: 에피소드 종료 여부
+        """
+        next_state = self._get_next_state(self.current_state, action)
+        reward = self.get_reward(self.current_state, action, next_state)
+        done = next_state in self.goal_states
+        self.current_state = next_state
+        return next_state, reward, done
 
     def print_values(self, value_function):
         """Value function을 그리드 형태로 출력"""
